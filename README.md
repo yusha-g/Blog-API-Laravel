@@ -139,9 +139,4 @@
 - Endpoint: **`/articles/{article_id}/comments`**
 - Action: Allow a user with the "writer" role to read comments on an article they created.
 
-### Delete Comment
-- Method: DELETE
-- Endpoint: **`/articles/{article_id}/comments`**
-- Request Body: { "content" }
-- Action: Allow a user with the "editor" role to create a comment on an article.
 

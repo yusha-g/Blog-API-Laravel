@@ -48,6 +48,7 @@
 - comment id (auto-increment)
 - article id (foreign key referencing Articles (article_id) )
 - creator id (foreign key referencing Users (user_id) )
+- content
 
 ### Assumptions
 

@@ -13,13 +13,17 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommentController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 
-//AUTHENTICATION ROUTES
+/*===================
+ * AUTHENTICATION ROUTES
+ * ==================
+ */
 
 Route::post(
     '/register', 
@@ -36,7 +40,10 @@ Route::post(
     [AuthController::class, 'logout']
 )->name('logout');
 
-//PROFILE ROUTES
+/*===================
+ * PROFILE ROUTES
+ * ==================
+ */
 
 Route::get(
     '/profile', 
@@ -48,7 +55,10 @@ Route::put(
     [ProfileController::class, 'edit_profile']
 )->name('edit_profile');
 
-//ARTICLE ROUTES
+/*===================
+ * ARTICLE ROUTES
+ * ==================
+ */
 
 Route::get(
     '/articles', 
@@ -74,3 +84,18 @@ Route::delete(
     '/articles/{article_id}', 
     [ArticleController::class, 'delete_article']
 )->name('delete_article');
+
+/*===================
+ * COMMENT ROUTES
+ * ==================
+ */
+
+Route::post(
+    '/articles/{article_id}/comments', 
+    [CommentController::class, 'create_comment']
+)->name('create_comment');
+
+Route::get(
+    '/articles/{article_id}/comments', 
+    [CommentController::class, 'read_comments']
+)->name('read_comments');

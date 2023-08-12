@@ -52,8 +52,8 @@ Route::put(
 
 Route::get(
     '/articles', 
-    [ArticleController::class, 'view_article']
-)->name('view_article');
+    [ArticleController::class, 'check_article_access']
+)->name('check_article_access');
 
 Route::post(
     '/articles', 

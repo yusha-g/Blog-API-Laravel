@@ -12,10 +12,14 @@
 */
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ArticleController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+//AUTHENTICATION ROUTES
 
 Route::post(
     '/register', 
@@ -32,6 +36,8 @@ Route::post(
     [AuthController::class, 'logout']
 )->name('logout');
 
+//PROFILE ROUTES
+
 Route::get(
     '/profile', 
     [ProfileController::class, 'view_profile']
@@ -41,3 +47,30 @@ Route::put(
     '/profile', 
     [ProfileController::class, 'edit_profile']
 )->name('edit_profile');
+
+//ARTICLE ROUTES
+
+Route::get(
+    '/articles', 
+    [ArticleController::class, 'view_article']
+)->name('view_article');
+
+Route::post(
+    '/articles', 
+    [ArticleController::class, 'create_article']
+)->name('create_article');
+
+Route::get(
+    '/articles/{article_id}', 
+    [ArticleController::class, 'read_article']
+)->name('read_article');
+
+Route::put(
+    '/articles/{article_id}', 
+    [ArticleController::class, 'update_article']
+)->name('update_article');
+
+Route::delete(
+    '/articles/{article_id}', 
+    [ArticleController::class, 'delete_article']
+)->name('delete_article');

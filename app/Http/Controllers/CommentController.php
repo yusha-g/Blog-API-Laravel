@@ -26,7 +26,7 @@ class CommentController extends Controller
                     'content'=>$validatedData['content']
                 ]);
                 return response()->json([
-                    "message"=>"Successfully Created Article",
+                    "message"=>"Successfully Created Comment",
                     "article_id"=>$comment->comment_id
                 ]);
             }

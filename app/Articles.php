@@ -15,4 +15,9 @@ class Articles extends Model
     {
         return $this->belongsTo(User::class, 'creator_id');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comments::class, 'article_id', 'article_id');
+    }
 }

@@ -12,13 +12,13 @@ use App\Articles;
 class ArticleController extends Controller
 {
 
-    private function get_user_role(){
+    public function get_user_role(){
         $userProfile = UserProfiles::where('user_id', Auth::user()->id)->first();
         return $userProfile->role;
     }
 
     public function get_article_ids(){
-        $role = ArticleController::get_user_role();
+        $role = $this->get_user_role();
         if($role=='writer'){
             $articleID = Articles::where('creator_id', Auth::user()->id)->pluck('article_id');
         }

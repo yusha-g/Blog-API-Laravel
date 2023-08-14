@@ -26,12 +26,14 @@ class ProfileController extends Controller
 
     public function edit_profile(Request $req){
         $userProfile = UserProfiles::where('user_id', Auth::user()->id)->first();
-            
+            $customMessages = [
+                'role.in' => 'The selected role is invalid [editor/writer]',
+            ];
             $validatedData = $req->validate([
                 'first_name' => 'required|string|max:255',
                 'last_name' => 'required|string|max:255',
                 'role' => 'required|string|in:editor,writer'
-            ]);
+            ],$customMessages);
             
             $userProfile -> update([
                 'first_name' => $validatedData['first_name'],

@@ -99,3 +99,8 @@ Route::get(
     '/articles/{article_id}/comments', 
     [CommentController::class, 'read_comments']
 )->name('read_comments');
+
+Route::delete(
+    '/articles/{article_id}/comments/{comment_id}', 
+    [CommentController::class, 'delete_comment']
+)->name('delete_comment');

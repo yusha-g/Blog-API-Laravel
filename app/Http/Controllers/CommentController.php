@@ -59,4 +59,33 @@ class CommentController extends Controller
             ],401);
         }
     }
+
+    public function delete_comment(Request $req, $article_id,$comment_id){
+        $articleIDs = get_article_ids();
+        if(in_array($article_id,$articleIDs->toArray())){
+            $comment = Comments::where('comment_id',$comment_id)
+            ->where('creator_id',Auth::user()->id)
+            ->first();
+            if($comment){
+                $comment -> delete();
+                return response()->json([
+                    "message"=>"Successfully Deleted Comment",
+                    "id"=>$comment_id
+                ]);
+            }
+            else{
+                return response()->json([
+                    "message"=>"Connot Deleted Comment",
+                    'id'=>$comment_id
+                ],401);
+            }
+        }
+        else{
+            return response()->json([
+                "message"=>"Cannot Access Article",
+                "role"=>$role,
+                "Accessible Articles"=>$articleIDs
+            ],401);
+        }
+    }
 }

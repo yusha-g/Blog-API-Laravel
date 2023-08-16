@@ -25,14 +25,14 @@ Route::get('/', function () {
  * ==================
  */
 
-Route::post(
+Route::get(
     '/register', 
-    [AuthController::class, 'register']
+    [AuthController::class, 'register_view']
 )->name('register');
 
-Route::post(
+Route::get(
     '/login', 
-    [AuthController::class, 'login']
+    [AuthController::class, 'login_view']
 )->name('login');
 
 Route::post(

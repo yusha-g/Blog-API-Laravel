@@ -53,6 +53,14 @@ class AuthController extends Controller
         }
     }
 
+    public function register_view(){
+        return view('auth.register');
+    }
+
+    public function login_view(){
+        return view('auth.login');
+    }
+
     public function login(Request $req){
         if(Auth::check()){
             return Auth::user()->email." is Already Logged In!";

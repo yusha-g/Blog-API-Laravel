@@ -11,6 +11,12 @@ use App\UserProfiles;
 
 class AuthController extends Controller
 {
+
+    public function register_view(){
+        return view('auth.register');
+    }
+
+
     public function register(Request $req){
         try{
             #VALIDATE REQUEST
@@ -53,39 +59,15 @@ class AuthController extends Controller
         }
     }
 
-    public function register_view(){
-        return view('auth.register');
-    }
 
     public function login_view(){
         return view('auth.login');
     }
 
     public function login(Request $req){
-        if(Auth::check()){
-            return Auth::user()->email." is Already Logged In!";
-        }
-        else{
-            $validatedData = $req->validate([
-                'email' => 'required|email',
-                'password' => 'required',
-            ]);
-            if (Auth::attempt($validatedData)) {
-                return response()->json(
-                    [
-                        'message'=>'Successfully Logged in!',
-                        'user'=>Auth::user()->id
-                    ],200
-                ); 
-            } else {
-                // Authentication failed
-                return response()->json(
-                    [
-                        'message'=>'Error Logging in!'
-                    ], 401
-                ); 
-            }
-        }
+                dd($req->all());
+                return view('profile');
+        
     }
 
     public function logout(Request $req){

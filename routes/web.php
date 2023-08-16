@@ -30,9 +30,19 @@ Route::get(
     [AuthController::class, 'register_view']
 )->name('register');
 
+Route::post(
+    '/register', 
+    [AuthController::class, 'register']
+)->name('register');
+
 Route::get(
     '/login', 
     [AuthController::class, 'login_view']
+)->name('login');
+
+Route::post(
+    '/login', 
+    [AuthController::class, 'login']
 )->name('login');
 
 Route::post(
